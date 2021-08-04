@@ -26,7 +26,7 @@ function game()  {
     playerScore = 0;
     computerScore = 0;
     for (let i = 0; I < 5; I++) {
-
+        playRPS('rock', computerPlay())
     }
 }
 
