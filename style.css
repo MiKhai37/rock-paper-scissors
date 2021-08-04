@@ -46,7 +46,27 @@ button {
 .center {
     margin: auto;
     width: 50%;
-    border: 3px solid green;
     padding: 10px;
     text-align: center;
   }
+
+/* Place the navbar at the bottom of the page, and make it stick */
+#botnav {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Style the links inside the navigation bar */
+#botnav a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1em;
+}
+

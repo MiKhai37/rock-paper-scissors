@@ -4,29 +4,21 @@ function computerPlay() {
     return rpsChoice[randInt];
 };
 
-function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value);
-  }
-
 function playRPS(playerSelection, computerSelection) {
-    const rpsState= {
-        1: ["rock", "paper"],
-        2: ["scissors", "rock"],
-        3: ["paper", "scissors"],
-        4: ["paper", "rock"],
-        5: ["scissors", "paper"],
-        6: ["rock", "scissors"],
-    }
-    const key = getKeyByValue(rpsState, [playerSelection.toLowerCase(), computerSelection.toLowerCase()]);
+    if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) return "Tie";
+    switch (playerSelection.toLowerCase()) {
 
-    console.log(key)
+        case "rock" :
+            if (computerSelection.toLowerCase() == "paper") return "Loser rock vs paper"
+            else return "Winner rock vs scissors"
 
-    if (key>3) {
-        return "Congratulations, you win";
-    } else if (key<=3) {
-        return "You lose";
-    } else {
-        return "Tie";
+        case "paper" :
+            if (computerSelection.toLowerCase() == "rock") return "Loser paper vs rock"
+            else return "Winner paper vs scissors"
+
+        case "scissors":
+            if (computerSelection.toLowerCase() == "rock") return "Loser scissors vs rock"
+            else return "Winner scissors vs paper"
     }
 }
 
