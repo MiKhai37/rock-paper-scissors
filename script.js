@@ -46,56 +46,37 @@ function playRound(playerSelection, computerSelection) {
             }
     }
 }
-// Play n times, and show scores
-function game(n=5)  {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < n; i++) {
-        console.log("Round: " + (i+1));
 
-        playerSelection = prompt();
-        computerSelection = computerPlay();
+let playerScore = 0;
+let computerScore = 0;
 
-        score = playRound(playerSelection, computerSelection);
+const resDiv = document.querySelector('#result-div');
+const result = document.createElement('div');
+result.textContent = 'Choose an element';
+resDiv.appendChild(result);
 
-        if (score == 1) playerScore += 1;
-        if (score == -1) computerScore += 1;
+const score = document.createElement('div');
+score.textContent = 'Score: Player = ' + playerScore + ', Computer = ' + computerScore 
+resDiv.appendChild(score)
 
-        console.log("Player Score: " + playerScore);
-        console.log("Computer Score: " + computerScore);
-    }
-
-    if (playerScore == computerScore) {
-        console.log("Tie! Nobody win!");
-    } else if (playerScore > computerScore) {
-        console.log("Player wins!");
-    } else {
-        console.log("Computer wins!");
-    }
-}
-
-// Test the logic implemented
-/*const playerSelection = 'Rock'
-const computerSelection = computerPlay()
-
-console.log("player plays: " + playerSelection)
-console.log("computer plays: " + computerSelection)
-
-console.log(playRound(playerSelection, computerSelection))*/
 
 const rockBtn = document.querySelector('#rock-btn');
 rockBtn.addEventListener('click', () => {
   playRound('rock', computerPlay());
+  result.textContent = 'You played rock!';
 });
 
 const paperBtn = document.querySelector('#paper-btn');
 paperBtn.addEventListener('click', () => {
   playRound('paper', computerPlay());
+  result.textContent = 'You played paper!';
 });
 
 const ScissorsBtn = document.querySelector('#scissors-btn');
 ScissorsBtn.addEventListener('click', () => {
   playRound('scissors', computerPlay());
+  result.textContent = 'You played scissors!';
 });
+
 
 
