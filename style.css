@@ -8,8 +8,15 @@ body, html {
 
 button {
     font-size: 2em;
-    padding: 2.5em;
+    padding: 2.0em;
     margin: 30px;
+    border-radius: 10%;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  transform: scale(1.1);
 }
 
 #topnav {
@@ -70,4 +77,3 @@ button {
   text-decoration: none;
   font-size: 1em;
 }
-

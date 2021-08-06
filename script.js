@@ -83,6 +83,19 @@ console.log("computer plays: " + computerSelection)
 
 console.log(playRound(playerSelection, computerSelection))*/
 
-game()
+const rockBtn = document.querySelector('#rock-btn');
+rockBtn.addEventListener('click', () => {
+  playRound('rock', computerPlay());
+});
+
+const paperBtn = document.querySelector('#paper-btn');
+paperBtn.addEventListener('click', () => {
+  playRound('paper', computerPlay());
+});
+
+const ScissorsBtn = document.querySelector('#scissors-btn');
+ScissorsBtn.addEventListener('click', () => {
+  playRound('scissors', computerPlay());
+});
 
 
