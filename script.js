@@ -4,17 +4,7 @@ let playerElement = '';
 let playerScore = 0;
 let computerScore = 0;
 
-let nbGame = 0;
-
-const resDiv = document.querySelector('#result-div');
-
-const result = document.createElement('div');
-result.textContent = 'Choose an element';
-resDiv.appendChild(result);
-
-const score = document.createElement('div');
-score.textContent = 'Score: Player = ' + playerScore + ', Computer = ' + computerScore 
-resDiv.appendChild(score)
+let round = 0;
 
 // Random Select between rock, paper and scissors
 function computerPlay() {
@@ -25,9 +15,8 @@ function computerPlay() {
 
 // Play logic of rock paper scissors
 function playRound(playerSelection, computerSelection) {
-
+    round = round + 1;
     if (playerSelection == computerSelection) {
-        result.textContent = 'Tie!';
         return 0;
     }
 
@@ -35,46 +24,68 @@ function playRound(playerSelection, computerSelection) {
 
         case "rock" :
             if (computerSelection == "paper") {
-                result.textContent = "Loser rock vs paper"
-                return -1
+                computerScore ++;
+                return -1;
             } else {
-                result.textContent = "Winner rock vs scissors"
-                return 1
+                playerScore ++;
+                return 1;
             }
 
         case "paper" :
             if (computerSelection == "rock") {
-                result.textContent = "Loser paper vs rock"
-                return -1
+                computerScore ++;
+                return -1;
             } else {
-                result.textContent = "Winner paper vs scissors"
-                return 1
+                playerScore ++;
+                return 1;
             }
 
         case "scissors":
             if (computerSelection == "rock") {
-                result.textContent = "Loser scissors vs rock"
-                return -1
+                computerScore ++;
+                return -1;
             } else {
-                result.textContent = "Winner scissors vs paper"
-                return 1
+                playerScore ++;
+                return 1;
             }
+    }
+}
+
+function renderScore() {
+    const scoreDiv = document.querySelector('#score-div')
+    scoreDiv.innerHTML = ""
+    scoreDiv.classList.add("center")
+    scoreDiv.innerHTML = `<h3>Round: ${round}, Player: ${playerScore}, Computer: ${computerScore}</h3>`;
+    if (playerScore == 5) {
+        scoreDiv.innerHTML = `<h3>Player Wins</h3>`;
+        round = 0;
+        computerScore = 0;
+        playerScore = 0;
+    };
+    if (computerScore == 5) {
+        scoreDiv.innerHTML = `<h3>Computer Wins</h3>`;
+        round = 0;
+        computerScore = 0;
+        playerScore = 0;
     }
 }
 
 const rockBtn = document.querySelector('#rock-btn');
 rockBtn.addEventListener('click', () => {
   playRound('rock', computerPlay());
+  renderScore();
 });
 
 const paperBtn = document.querySelector('#paper-btn');
 paperBtn.addEventListener('click', () => {
   playRound('paper', computerPlay());
+  renderScore();
 });
 
 const ScissorsBtn = document.querySelector('#scissors-btn');
 ScissorsBtn.addEventListener('click', () => {
   playRound('scissors', computerPlay());
+  renderScore();
 });
 
 
